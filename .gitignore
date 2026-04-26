@@ -1,0 +1,8 @@
+__pycache__/
+.venv/
+*.pyc
+.env
+.idea/
+banking_agent.db
+banking_agent.db-shm
+banking_agent.db-wal

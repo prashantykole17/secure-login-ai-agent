@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Login Assistance Agent</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Secure Access Recovery</p>
+          <h1>AI Login Assistance Agent</h1>
+          <p class="hero-copy">
+            LangGraph-orchestrated banking support with an OpenAI conversational
+            model, SQLite-backed account workflows, OTP generation, and live
+            security operations data.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button
+            id="snapshot-link-top"
+            type="button"
+            class="ghost-button"
+            onclick="if (window.__snapshotOpening) return false; window.__snapshotOpening = true; window.open('/data-snapshot', '_blank', 'noopener,noreferrer'); setTimeout(function () { window.__snapshotOpening = false; }, 800); return false;"
+          >Data Snapshot</button>
+          <a class="ghost-button nav-link" href="/otp-utility" target="_blank" rel="noopener noreferrer">OTP Utility</a>
+          <button id="clear-memory" class="ghost-button">Clear Agent Memory</button>
+          <button id="reset-demo" class="ghost-button">Reset Demo Data</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel chat-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-label">Chatbot</p>
+              <h2>Login Recovery Console</h2>
+            </div>
+            <span id="ai-status" class="status-pill">Checking AI</span>
+          </div>
+
+          <section id="human-gate" class="human-gate hidden">
+            <div class="human-gate-copy">
+              <p class="panel-label">Human Check</p>
+              <h3>Verify You Are Human</h3>
+              <p id="human-question" class="hero-copy"></p>
+            </div>
+            <form id="human-check-form" class="human-form">
+              <label>
+                Answer
+                <input id="human-answer" type="text" placeholder="Enter your answer" />
+              </label>
+              <input id="human-honeypot" class="human-honeypot" type="text" tabindex="-1" autocomplete="off" />
+              <button type="submit" class="primary-button">Verify</button>
+            </form>
+            <div id="human-result" class="result-card muted">
+              Complete this quick check before using the chat agent.
+            </div>
+          </section>
+
+          <div id="messages" class="messages"></div>
+          <div class="suggestions">
+            <button class="chip quick-prompt" data-prompt="I forgot my password and need help resetting it.">
+              Forgot Password
+            </button>
+            <button class="chip quick-prompt" data-prompt="My banking account is locked. Help me unlock it.">
+              Unlock Account
+            </button>
+            <button class="chip quick-prompt" data-prompt="I am trying to log in from a new device and need approval.">
+              New Device Login
+            </button>
+            <button class="chip quick-prompt" data-prompt="I noticed suspicious login activity on my account.">
+              Suspicious Activity
+            </button>
+            <button class="chip quick-prompt" data-prompt="Show me the demo users I can test with.">
+              Demo Users
+            </button>
+          </div>
+
+          <form id="chat-form" class="composer">
+            <textarea
+              id="chat-input"
+              rows="3"
+              placeholder="Describe the banking login issue or choose a flow above..."
+            ></textarea>
+            <button type="submit" class="primary-button">Send</button>
+          </form>
+        </section>
+
+        <section class="stack">
+          <section class="panel simulator-panel">
+            <div class="panel-head">
+              <div>
+                <p class="panel-label">Login Simulator</p>
+                <h2>Risk Decision Engine</h2>
+              </div>
+            </div>
+
+            <div id="model-caption" class="result-card muted">
+              The chatbot uses LangGraph with an OpenAI conversation model. The simulator below keeps
+              deterministic banking risk rules for login decisions.
+            </div>
+
+            <form id="simulator-form" class="simulator-form">
+              <label>
+                Username / Customer ID
+                <input id="sim-username" type="text" value="asha.m" />
+              </label>
+              <label>
+                Password
+                <input id="sim-password" type="text" value="Secure@123" />
+              </label>
+              <label>
+                Device ID
+                <input id="sim-device" type="text" value="ashas-iphone" />
+              </label>
+              <label>
+                Location
+                <input id="sim-location" type="text" value="Chicago" />
+              </label>
+              <button type="submit" class="primary-button">Simulate Login</button>
+            </form>
+
+            <div id="sim-result" class="result-card muted">
+              Run a login attempt to see whether the system allows, challenges, or blocks it.
+            </div>
+
+            <form id="otp-form" class="otp-form hidden">
+              <label>
+                OTP Code
+                <input id="otp-input" type="text" maxlength="6" placeholder="Enter OTP" />
+              </label>
+              <button type="submit" class="secondary-button">Verify OTP</button>
+            </form>
+          </section>
+          <section class="panel simulator-panel">
+            <div class="panel-head">
+              <div>
+                <p class="panel-label">Data Snapshot</p>
+                <h2>Open Live Dashboard Separately</h2>
+              </div>
+            </div>
+
+            <div class="result-card muted">
+              The full database snapshot has been moved to a dedicated page so the chat screen stays compact.
+              Open the live snapshot to view users, events, alerts, workflows, memory, and risk assessments.
+            </div>
+
+            <div class="simulator-form">
+              <button
+                id="snapshot-link-panel"
+                type="button"
+                class="primary-button"
+                onclick="if (window.__snapshotOpening) return false; window.__snapshotOpening = true; window.open('/data-snapshot', '_blank', 'noopener,noreferrer'); setTimeout(function () { window.__snapshotOpening = false; }, 800); return false;"
+              >Open Data Snapshot</button>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+  </html>
