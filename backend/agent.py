@@ -8,12 +8,12 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_openai import ChatOpenAI
 
 from backend.config import Settings
-from backend.repository import BankingRepository
+from backend.repository import LoginRepository
 from backend.tools import build_tools
 
 
-class BankingSupportAgent:
-    def __init__(self, settings: Settings, repository: BankingRepository) -> None:
+class LoginSupportAgent:
+    def __init__(self, settings: Settings, repository: LoginRepository) -> None:
         self.settings = settings
         self.repository = repository
 

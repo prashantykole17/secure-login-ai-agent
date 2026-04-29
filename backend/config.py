@@ -34,7 +34,7 @@ class Settings:
 
 def get_settings() -> Settings:
     load_env_file()
-    db_path = os.getenv("APP_DB_PATH", str(ROOT_DIR / "banking_agent.db"))
+    db_path = os.getenv("APP_DB_PATH", str(ROOT_DIR / "login_agent.db"))
     return Settings(
         app_name="AI Login Assistance Agent",
         host=os.getenv("APP_HOST", "127.0.0.1"),
@@ -43,7 +43,7 @@ def get_settings() -> Settings:
         openai_model=os.getenv("OPENAI_MODEL", "gpt-5-mini"),
         db_path=Path(db_path),
         system_prompt=(
-            "You are a banking login assistance AI agent. Help users with login support "
+            "You are a login assistance AI agent. Help users with login support "
             "through secure, step-by-step conversation. Use tools whenever account data, "
             "OTP validation, password reset, account unlock, device approval, login risk, "
             "or suspicious activity actions are needed. Never invent account state. "

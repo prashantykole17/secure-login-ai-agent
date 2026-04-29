@@ -28,7 +28,7 @@ const humanCheckForm = document.getElementById("human-check-form");
 const humanAnswer = document.getElementById("human-answer");
 const humanHoneypot = document.getElementById("human-honeypot");
 const humanResult = document.getElementById("human-result");
-const SESSION_STORAGE_KEY = "bankingAgentSessionToken";
+const SESSION_STORAGE_KEY = "loginAgentSessionToken";
 
 function saveSessionToken(sessionToken) {
   if (!sessionToken) {

@@ -7,16 +7,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from backend.agent import BankingSupportAgent
+from backend.agent import LoginSupportAgent
 from backend.config import ROOT_DIR, get_settings
-from backend.repository import BankingRepository
-from backend.schemas import BankingOtpLookupRequest, ChatRequest, HumanCheckRequest, LoginSimulationRequest, MobileOtpRequest, VerifyMobileOtpRequest, VerifyOtpRequest
+from backend.repository import LoginRepository
+from backend.schemas import ChatOtpLookupRequest, ChatRequest, HumanCheckRequest, LoginSimulationRequest, MobileOtpRequest, VerifyMobileOtpRequest, VerifyOtpRequest
 
 
 settings = get_settings()
-repository = BankingRepository(str(settings.db_path))
+repository = LoginRepository(str(settings.db_path))
 repository.init_db()
-agent = BankingSupportAgent(settings, repository)
+agent = LoginSupportAgent(settings, repository)
 
 app = FastAPI(title=settings.app_name)
 app.add_middleware(
@@ -196,6 +196,6 @@ def verify_mobile_otp(payload: VerifyMobileOtpRequest) -> dict:
     return result
 
 
-@app.post("/api/utility/banking-chat-otp")
-def lookup_banking_chat_otp(payload: BankingOtpLookupRequest) -> dict:
-    return repository.get_latest_banking_chat_otp_by_phone(payload.phoneNumber)
+@app.post("/api/utility/chat-otp")
+def lookup_chat_otp(payload: ChatOtpLookupRequest) -> dict:
+    return repository.get_latest_chat_otp_by_phone(payload.phoneNumber)

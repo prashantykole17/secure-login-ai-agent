@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from langchain_core.tools import tool
 
-from backend.repository import BankingRepository
+from backend.repository import LoginRepository
 
 
-def build_tools(repository: BankingRepository, session_id: int):
+def build_tools(repository: LoginRepository, session_id: int):
     @tool
     def fetch_customer_profile(identifier: str) -> str:
-        """Look up a banking customer profile by username, customer ID, or email."""
+        """Look up a customer profile by username, customer ID, or email."""
         return str(repository.get_user_snapshot(identifier))
 
     @tool

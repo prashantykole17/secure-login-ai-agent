@@ -1,5 +1,9 @@
 # AI Login Assistance Agent
 
+## Disclaimer
+
+This project is developed solely for educational and demonstration purposes. It is a prototype intended to showcase conversational AI, workflow orchestration, OTP validation, and secure login support concepts. It is not designed, tested, or approved for production use.
+
 This project is a proper local full-stack application with:
 
 - `FastAPI` backend APIs
@@ -8,7 +12,7 @@ This project is a proper local full-stack application with:
 - `SQLite` database for accounts, chat history, OTP records, login events, and security alerts
 - chatbot-style frontend UI
 - OTP generation and validation inside the app
-- all requested banking login support use cases
+- all requested login support use cases
 
 ## Architecture
 
@@ -17,7 +21,7 @@ This project is a proper local full-stack application with:
 - `backend/main.py` -> FastAPI app and API routes
 - `backend/agent.py` -> LangGraph agent using an OpenAI chat model
 - `backend/tools.py` -> agent tools for account lookup, OTP, unlock, password reset, device approval, and alerts
-- `backend/repository.py` -> SQLite schema, seed data, and banking business logic
+- `backend/repository.py` -> SQLite schema, seed data, and login support business logic
 - `backend/schemas.py` -> request models
 - `backend/config.py` -> environment and app settings
 
@@ -43,7 +47,7 @@ The chatbot is implemented with `LangGraph` and `langchain-openai`.
 
 - The model is configured in `.env`
 - Default model: `gpt-5-mini`
-- The LangGraph agent uses tools to safely access customer records and perform banking actions
+- The LangGraph agent uses tools to safely access customer records and perform login support actions
 
 This follows current documentation patterns:
 
@@ -62,7 +66,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 OPENAI_MODEL=gpt-5-mini
 APP_HOST=127.0.0.1
 APP_PORT=8000
-APP_DB_PATH=banking_agent.db
+APP_DB_PATH=login_agent.db
 ```
 
 ### 2. Install dependencies
@@ -136,10 +140,10 @@ The chatbot requires a valid `OPENAI_API_KEY` to produce conversational AI respo
 
 For SQLite, there are no host/user/password details. The database is just a file path:
 
-- `APP_DB_PATH=banking_agent.db`
+- `APP_DB_PATH=login_agent.db`
 
 If you want a custom location, set an absolute path in `.env`, for example:
 
 ```text
-APP_DB_PATH=C:\Users\YourName\Projects\banking-agent\banking_agent.db
+APP_DB_PATH=C:\Users\YourName\Projects\login-agent\login_agent.db
 ```

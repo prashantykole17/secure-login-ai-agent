@@ -32,7 +32,7 @@ class VerifyMobileOtpRequest(BaseModel):
     otpCode: str
 
 
-class BankingOtpLookupRequest(BaseModel):
+class ChatOtpLookupRequest(BaseModel):
     sessionToken: str | None = None
     phoneNumber: str
 

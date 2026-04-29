@@ -112,7 +112,7 @@ def password_is_strong(password: str) -> bool:
     )
 
 
-class BankingRepository:
+class LoginRepository:
     def __init__(self, db_path: str) -> None:
         self.db_path = db_path
 
@@ -1721,7 +1721,7 @@ class BankingRepository:
             for row in rows
         ]
 
-    def get_latest_banking_chat_otp_by_phone(self, phone_number: str) -> dict[str, Any]:
+    def get_latest_chat_otp_by_phone(self, phone_number: str) -> dict[str, Any]:
         digits = normalize_phone(phone_number)
         if len(digits) < 10:
             return {"ok": False, "message": "Enter a valid mobile number with at least 10 digits."}
@@ -1744,7 +1744,7 @@ class BankingRepository:
         )
 
         if not challenge:
-            return {"ok": False, "message": "No banking chat OTP was found for that mobile number yet."}
+            return {"ok": False, "message": "No chat OTP was found for that mobile number yet."}
 
         expires_at = datetime.fromisoformat(challenge["expires_at"])
         status = challenge["status"]
@@ -1768,7 +1768,7 @@ class BankingRepository:
             "expiresAt": challenge["expires_at"],
             "createdAt": challenge["created_at"],
             "remainingSeconds": remaining_seconds,
-            "message": f"Latest banking chat OTP fetched for {challenge['full_name']}.",
+            "message": f"Latest chat OTP fetched for {challenge['full_name']}.",
         }
 
     def _record_risk_assessment(

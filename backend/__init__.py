@@ -1,1 +1,1 @@
-"""Backend package for the banking login assistance agent."""
+"""Backend package for the login assistance agent."""

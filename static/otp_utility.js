@@ -2,8 +2,8 @@ const otpForm = document.getElementById("mobile-otp-form");
 const verifyForm = document.getElementById("mobile-otp-verify-form");
 const otpResult = document.getElementById("mobile-otp-result");
 const otpHistory = document.getElementById("mobile-otp-history");
-const bankingChatOtpForm = document.getElementById("banking-chat-otp-form");
-const bankingChatOtpResult = document.getElementById("banking-chat-otp-result");
+const chatOtpForm = document.getElementById("chat-otp-form");
+const chatOtpResult = document.getElementById("chat-otp-result");
 
 let otpHistoryItems = [];
 
@@ -132,11 +132,11 @@ verifyForm.addEventListener("submit", async (event) => {
   }
 });
 
-bankingChatOtpForm.addEventListener("submit", async (event) => {
+chatOtpForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const phoneNumber = document.getElementById("banking-chat-phone").value.trim();
+  const phoneNumber = document.getElementById("chat-otp-phone").value.trim();
 
-  const response = await fetch("/api/utility/banking-chat-otp", {
+  const response = await fetch("/api/utility/chat-otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ phoneNumber }),
@@ -144,9 +144,9 @@ bankingChatOtpForm.addEventListener("submit", async (event) => {
 
   try {
     const data = await parseJsonResponse(response);
-    bankingChatOtpResult.className = "result-card allowed";
-    bankingChatOtpResult.innerHTML = `
-      Banking chat OTP found for <strong>${escapeHtml(data.fullName)}</strong><br /><br />
+    chatOtpResult.className = "result-card allowed";
+    chatOtpResult.innerHTML = `
+      Chat OTP found for <strong>${escapeHtml(data.fullName)}</strong><br /><br />
       Username: ${escapeHtml(data.username)}<br />
       Mobile: ${escapeHtml(data.phoneNumber)}<br />
       OTP: <strong>${escapeHtml(data.otpCode)}</strong><br />
@@ -156,8 +156,8 @@ bankingChatOtpForm.addEventListener("submit", async (event) => {
       Expires at: ${escapeHtml(data.expiresAt)}
     `;
   } catch (error) {
-    bankingChatOtpResult.className = "result-card blocked";
-    bankingChatOtpResult.textContent = error.message || "Lookup failed.";
+    chatOtpResult.className = "result-card blocked";
+    chatOtpResult.textContent = error.message || "Lookup failed.";
   }
 });
 

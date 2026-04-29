@@ -3,6 +3,6 @@ __pycache__/
 *.pyc
 .env
 .idea/
-banking_agent.db
-banking_agent.db-shm
-banking_agent.db-wal
+login_agent.db
+login_agent.db-shm
+login_agent.db-wal

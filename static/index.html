@@ -13,7 +13,7 @@
           <p class="eyebrow">Secure Access Recovery</p>
           <h1>AI Login Assistance Agent</h1>
           <p class="hero-copy">
-            LangGraph-orchestrated banking support with an OpenAI conversational
+            LangGraph-orchestrated login support with an OpenAI conversational
             model, SQLite-backed account workflows, OTP generation, and live
             security operations data.
           </p>
@@ -65,7 +65,7 @@
             <button class="chip quick-prompt" data-prompt="I forgot my password and need help resetting it.">
               Forgot Password
             </button>
-            <button class="chip quick-prompt" data-prompt="My banking account is locked. Help me unlock it.">
+            <button class="chip quick-prompt" data-prompt="My account is locked. Help me unlock it.">
               Unlock Account
             </button>
             <button class="chip quick-prompt" data-prompt="I am trying to log in from a new device and need approval.">
@@ -83,7 +83,7 @@
             <textarea
               id="chat-input"
               rows="3"
-              placeholder="Describe the banking login issue or choose a flow above..."
+              placeholder="Describe the login issue or choose a flow above..."
             ></textarea>
             <button type="submit" class="primary-button">Send</button>
           </form>
@@ -100,7 +100,7 @@
 
             <div id="model-caption" class="result-card muted">
               The chatbot uses LangGraph with an OpenAI conversation model. The simulator below keeps
-              deterministic banking risk rules for login decisions.
+              deterministic risk rules for login decisions.
             </div>
 
             <form id="simulator-form" class="simulator-form">
