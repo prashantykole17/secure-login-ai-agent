@@ -115,10 +115,11 @@ http://127.0.0.1:8000
 
 ## Demo users
 
-- `asha.m` / `Secure@123` -> trusted profile
-- `ravi.k` / `Bank@789` -> locked account case
-- `priya.n` / `Reset@456` -> password reset case
-- `daniel.l` / `Vault#321` -> suspicious activity case
+- `alpha.m` / `Secure@123` -> trusted profile
+- `gemma.c` / `Bank@789` -> locked account case
+- `beta.c` / `Reset@456` -> password reset case
+- `delta.d` / `Vault#321` -> suspicious activity case
+- `zeta.z` / `Orbit#654` -> extra clean profile
 
 ## API routes
 
